@@ -1,0 +1,1 @@
+.message-container{width:clamp(320px,100%,800px);height:100vh;display:flex;flex-direction:column;gap:30px;justify-content:center;align-items:center;margin:auto;animation:fadeIn 4s forwards}.message-container #message{font-size:2rem;border:3px solid #f19800;text-align:center;padding:20px}/*# sourceMappingURL=message.min.css.map */

@@ -1,0 +1,128 @@
+#loader {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#loader .loader-icon {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #f19800;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+.message-container {
+  width: clamp(320px, 100%, 800px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  animation: fadeIn 4s forwards;
+}
+.message-container #message {
+  font-size: 2rem;
+  border: 3px solid #f19800;
+  text-align: center;
+  padding: 20px;
+}
+
+.main-button {
+  padding: 20px 10px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #f19800;
+  border-radius: 15px;
+  font-size: 1.6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  animation: titleAnimation 3s forwards;
+  width: 100%;
+  position: fixed;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+.hide {
+  display: none !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=app.css.map */
