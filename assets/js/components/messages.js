@@ -10,31 +10,31 @@ export function generateMessage() {
 	window.history.pushState(null, null, "?http_code=" + httpCode);
 }
 
-export function getUrlInfo() {
+// Événement au chargement de la page pour afficher un message aléatoire initial ou la page "lost"
+export function load() {
 	// Récupération de l'http_code depuis l'URL
 	let urlParams = new URLSearchParams(window.location.search);
-	let httpCode = urlParams.get("http_code");
+	let httpCodeParam = urlParams.get("http_code");
 
-	if (httpCode) {
+	if (httpCodeParam) {
 		// Recherche du message correspondant à l'http_code
-		let message = messages.find(function (element) {
-			return element.http_code == httpCode;
+		let getMessageInfos = messages.find(function (element) {
+			return element.http_code == httpCodeParam;
 		});
 
-		if (message) {
+		if (getMessageInfos) {
 			// Affichage du message correspondant à l'http_code
-			document.title = message.tag;
-			let httpCode = message.http_code;
-			document.getElementById("message").innerHTML = message.message;
-			window.history.pushState(null, null, "?http_code=" + httpCode);
+			generateMessage();
 		} else {
-			// Si aucun message ne correspond à l'http_code, redirection vers la page "lost"
-			window.history.pushState(null, null, "lost.html");
-			setTimeout(redirigerVersPagePrincipale, 5000); // Redirection vers la page principale après 5 secondes
+			// Si aucun message ne correspond à l'http_code, rediriger vers la page "lost"
+			window.history.pushState(null, null, "?page=lost");
+			setTimeout(function () {
+				window.location.href = window.location.origin + window.location.pathname;
+			}, 5000);
+			document.body.innerHTML = '<img src="https://media.giphy.com/media/njYrp176NQsHS/giphy.gif" alt="lost" style="display:block;margin:auto;width:100%;height:100vh;">';
 		}
 	} else {
-		// Si aucun http_code n'est spécifié dans l'URL, redirection vers la page "lost"
-		window.history.pushState(null, null, "lost.html");
-		setTimeout(redirigerVersPagePrincipale, 5000); // Redirection vers la page principale après 5 secondes
+		// Si aucun http_code n'est spécifié dans l'URL, affichage d'un message aléatoire
+		generateMessage();
 	}
 }
