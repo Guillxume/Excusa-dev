@@ -8,7 +8,7 @@ export function fakeLoader() {
 	setTimeout(hideLoader, time * 1000);
 }
 
-export function hideLoader() {
+function hideLoader() {
 	document.getElementById("loader").classList.add("hide");
 	generateMessage();
 }
